@@ -7,49 +7,49 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        <!-- Navigation -->
-        <nav class="bg-white border-b border-gray-100">
+    <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+        <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
-                    <div class="flex">
-                        <!-- Logo -->
-                        <div class="shrink-0 flex items-center">
-                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <div class="flex items-center">
+                        <div class="shrink-0">
+                            <a href="{{ route('home') }}" class="flex items-center">
+                                <x-application-logo class="block h-9 w-auto fill-current text-blue-600" />
+                                <span class="ml-3 text-xl font-bold text-gray-800">CampaignHub</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Navigation Links -->
-                    <div class="hidden sm:flex sm:items-center sm:ms-6">
+                  <div class="hidden sm:flex sm:items-center sm:ms-6 space-x-4">
                         @auth
-                            <a href="{{ route('dashboard') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2">Dashboard</a>
+                            <a href="{{ route('dashboard') }}" class="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium transition-colors duration-200">Dashboard</a>
                         @else
-                            <a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2">Login</a>
-                            <a href="{{ route('register') }}" class="ml-4 text-gray-600 hover:text-gray-900 px-3 py-2">Register</a>
+                            <a href="{{ route('login') }}" class="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium transition-colors duration-200">Login</a>
+                            <a href="{{ route('register') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 font-medium transition-colors duration-200">Register</a>
                         @endauth
                     </div>
                 </div>
             </div>
         </nav>
 
-        <!-- Page Content -->
         <main>
-            <!-- Introduction Section -->
-            <section class="bg-white py-12">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center">
-                        <h1 class="text-4xl font-bold text-gray-900 mb-4">مرحباً بكم في موقعنا</h1>
-                        <p class="text-xl text-gray-600 mb-8">
-                            منصة متكاملة لإدارة الحملات والتبرعات لدعم القضايا الإنسانية والمشاريع الخيرية
+            <!-- Hero Section -->
+            <section class="relative py-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div class="max-w-3xl mx-auto">
+                        <h1 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                            Make a Difference with Every Campaign
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                            Join our platform to support meaningful causes and create positive change in communities around the world.
                         </p>
                         @guest
-                        <div class="space-x-4">
-                            <a href="{{ route('register') }}" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
-                                إنشاء حساب
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                            <a href="{{ route('register') }}" class="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                Get Started
                             </a>
-                            <a href="{{ route('login') }}" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50">
-                                تسجيل الدخول
+                            <a href="#campaigns" class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 font-semibold text-lg transition-all duration-300">
+                                Explore Campaigns
                             </a>
                         </div>
                         @endguest
@@ -57,63 +57,78 @@
                 </div>
             </section>
 
-            <!-- Latest Campaigns Section -->
-            <section class="py-12 bg-gray-50">
+            <!-- Campaigns Section -->
+            <section id="campaigns" class="py-16 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">أحدث الحملات</h2>
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-4">Latest Campaigns</h2>
+                        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                            Discover ongoing and upcoming campaigns that need your support to make a real impact.
+                        </p>
+                    </div>
                     
-                    <!-- Campaigns Table -->
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <table class="min-w-full">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">اسم الحملة</th>
-                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الوصف</th>
-                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الحالة</th>
-                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">التاريخ</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <!-- Sample campaign data - will be replaced with dynamic data -->
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">حملة التعليم للجميع</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500">توفير التعليم للأطفال المحتاجين في المناطق النائية</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">نشطة</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-01-15</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">حملة الصحة للجميع</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500">توفير الرعاية الصحية الأساسية للمجتمعات المحتاجة</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">قيد التجهيز</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-01-10</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">حملة الغذاء الآمن</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500">توزيع وجبات غذائية للأسر المحتاجة</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">مكتملة</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2023-12-20</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- Campaigns Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        @foreach($campaigns as $campaign)
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="px-3 py-1 text-xs font-semibold rounded-full {{ $campaign->getStatusBadgeClass() }}">
+                                        {{ $campaign->status }}
+                                    </span>
+                                    <span class="text-sm text-gray-500">{{ $campaign->start_date->format('M d, Y') }}</span>
+                                </div>
+                                
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">{{ $campaign->name }}</h3>
+                                <p class="text-gray-600 mb-4 line-clamp-3">{{ $campaign->description }}</p>
+                                
+                                <div class="mb-4">
+                                    <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                        <span>Progress</span>
+                                        <span>{{ number_format($campaign->getProgressPercentage(), 1) }}%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+                                             style="width: {{ $campaign->getProgressPercentage() }}%"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Amounts -->
+                                <div class="flex justify-between text-sm text-gray-600 mb-4">
+                                    <span>Raised: ${{ number_format($campaign->current_amount) }}</span>
+                                    <span>Goal: ${{ number_format($campaign->target_amount) }}</span>
+                                </div>
+                                
+                                <!-- Action Button -->
+                                <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 font-semibold transition-colors duration-200">
+                                    Support Campaign
+                                </button>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
 
                     @guest
-                    <div class="text-center mt-8">
-                        <p class="text-gray-600 mb-4">سجل الآن للمشاركة في الحملات والتبرع</p>
-                        <a href="{{ route('register') }}" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
-                            انضم إلينا الآن
-                        </a>
+                    <div class="text-center mt-16">
+                        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 text-white">
+                            <h3 class="text-2xl font-bold mb-4">Ready to Make an Impact?</h3>
+                            <p class="text-blue-100 mb-6">Join thousands of supporters making a difference every day</p>
+                            <a href="{{ route('register') }}" class="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 font-semibold text-lg transition-all duration-300">
+                                Join Our Community
+                            </a>
+                        </div>
                     </div>
                     @endguest
                 </div>
             </section>
         </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p>&copy; 2024 CampaignHub. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
