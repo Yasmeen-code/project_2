@@ -34,8 +34,16 @@
                     </x-slot>
 
                     <x-slot name="content">
+                          <div class="border-t border-gray-100"></div>
+                        <x-dropdown-link :href="route('profile.show')">
+                            {{ __('Show Profile') }}
+                        </x-dropdown-link>
+
+
+                        <!-- Account Management -->
+                        <div class="border-t border-gray-100"></div>
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Edit Profile') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -77,6 +85,7 @@
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->role }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
