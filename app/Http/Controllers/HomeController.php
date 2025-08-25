@@ -16,6 +16,8 @@ class HomeController extends Controller
             ->take(6)
             ->get();
 
-        return view('welcome', compact('campaigns'));
+        $totalCampaigns = Campaign::count();
+
+        return view('welcome', compact('campaigns', 'totalCampaigns'));
     }
 }

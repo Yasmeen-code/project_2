@@ -18,15 +18,13 @@ class DonationController extends Controller
             'amount' => 'required|numeric|min:1',
         ]);
 
-        // Create the donation
         $donation = Donation::create([
             'user_id' => Auth::id(),
             'campaign_id' => $campaign->id,
             'amount' => $validated['amount'],
-            'status' => 'completed', // For now, we'll assume payment is completed
+            'status' => 'completed', 
         ]);
 
-        // Update the campaign's current amount
         $campaign->increment('current_amount', $validated['amount']);
 
         return redirect()->route('home')

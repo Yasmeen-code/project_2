@@ -56,20 +56,6 @@ class Campaign extends Model
     }
 
     /**
-     * Get the status text in Arabic.
-     */
-    public function getStatusText(): string
-    {
-        return match($this->status) {
-            'active' => 'نشطة',
-            'pending' => 'قيد التجهيز',
-            'completed' => 'مكتملة',
-            'cancelled' => 'ملغاة',
-            default => 'غير معروف',
-        };
-    }
-
-    /**
      * Get the donations for the campaign.
      */
     public function donations(): HasMany

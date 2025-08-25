@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>All Campaigns - {{ config('app.name', 'Laravel') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased">
@@ -33,39 +33,17 @@
         </nav>
 
         <main>
-            <section class="relative py-20">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div class="max-w-3xl mx-auto">
-                        <h1 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                            Make a Difference with Every Campaign
-                        </h1>
-                        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                            Join our platform to support meaningful causes and create positive change in communities around the world.
-                        </p>
-                        @guest
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                            <a href="{{ route('register') }}" class="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                Get Started
-                            </a>
-                            <a href="#campaigns" class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 font-semibold text-lg transition-all duration-300">
-                                Explore Campaigns
-                            </a>
-                        </div>
-                        @endguest
-                    </div>
-                </div>
-            </section>
-
             <!-- Campaigns Section -->
-            <section id="campaigns" class="py-16 bg-white">
+            <section class="py-16 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-12">
-                        <h2 class="text-4xl font-bold text-gray-900 mb-4">Latest Campaigns</h2>
+                        <h2 class="text-4xl font-bold text-gray-900 mb-4">All Campaigns</h2>
                         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                            Discover ongoing and upcoming campaigns that need your support to make a real impact.
+                            Browse through all available campaigns and support the causes that matter to you.
                         </p>
                     </div>
                     
+                    <!-- Campaigns Grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         @foreach($campaigns as $campaign)
                         <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
@@ -97,33 +75,23 @@
                                 </div>
                                 
                                 <a href="{{ route('campaign.show', $campaign->id) }}" class="block w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 font-semibold transition-colors duration-200 text-center">
-                                    Show Campaign
+                                    Support Campaign
                                 </a>
                             </div>
                         </div>
                         @endforeach
                     </div>
 
-                    <!-- View All Campaigns Button -->
-                    @if($totalCampaigns > 6)
+                    <!-- Pagination -->
+                    <div class="mt-12">
+                        {{ $campaigns->links() }}
+                    </div>
+
                     <div class="text-center mt-12">
-                        <a href="{{ route('campaigns.index') }}" class="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 font-semibold text-lg transition-all duration-300">
-                            View All Campaigns
+                        <a href="{{ route('home') }}" class="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 font-semibold text-lg transition-all duration-300">
+                            Back to Home
                         </a>
                     </div>
-                    @endif
-
-                    @guest
-                    <div class="text-center mt-16">
-                        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 text-white">
-                            <h3 class="text-2xl font-bold mb-4">Ready to Make an Impact?</h3>
-                            <p class="text-blue-100 mb-6">Join thousands of supporters making a difference every day</p>
-                            <a href="{{ route('register') }}" class="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 font-semibold text-lg transition-all duration-300">
-                                Join Our Community
-                            </a>
-                        </div>
-                    </div>
-                    @endguest
                 </div>
             </section>
         </main>
