@@ -100,9 +100,13 @@
                                 </div>
                                 
                                 <!-- Action Button -->
-                                <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 font-semibold transition-colors duration-200">
-                                    Support Campaign
-                                </button>
+                                <form action="{{ route('donate', $campaign->id) }}" method="POST">
+                                    @csrf
+                                    <input type="number" name="amount" placeholder="Enter donation amount" required class="border rounded-lg p-2 w-full mb-2">
+                                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 font-semibold transition-colors duration-200">
+                                        Support Campaign
+                                    </button>
+                                </form>
                             </div>
                         </div>
                         @endforeach
