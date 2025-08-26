@@ -36,11 +36,42 @@
             <!-- Campaigns Section -->
             <section class="py-16 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-4xl font-bold text-gray-900 mb-4">All Campaigns</h2>
+                    <div class="text-center mb-8">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                            @if(request()->has('category') && request()->category)
+                                {{ ucfirst(str_replace('_', ' ', request()->category)) }} Campaigns
+                            @else
+                                All Campaigns
+                            @endif
+                        </h2>
                         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                            Browse through all available campaigns and support the causes that matter to you.
+                            @if(request()->has('category') && request()->category)
+                                Browse {{ strtolower(request()->category) }} campaigns that need your support
+                            @else
+                                Browse through all available campaigns and support the causes that matter to you
+                            @endif
                         </p>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="mb-12">
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <a href="{{ route('campaigns.index') }}" 
+                               class="px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 
+                                      {{ !request()->has('category') ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' }}">
+                                All Categories
+                            </a>
+                            @foreach($categories as $key => $category)
+                            <a href="{{ route('campaigns.index') }}?category={{ $key }}" 
+                               class="px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 
+                                      {{ request()->has('category') && request()->category == $key ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' }}">
+                                {{ $category['icon'] }} {{ $category['name'] }}
+                                <span class="ml-1 text-xs bg-white/20 px-2 py-1 rounded-full">
+                                    {{ $categoryCounts[$key] ?? 0 }}
+                                </span>
+                            </a>
+                            @endforeach
+                        </div>
                     </div>
                     
                     <!-- Campaigns Grid -->

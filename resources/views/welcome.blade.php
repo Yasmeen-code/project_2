@@ -57,22 +57,22 @@
             </section>
 
             <!-- Categories Section -->
-            <section class="py-16 bg-gray-50">
+            <section class="py-12 bg-gray-50">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-4xl font-bold text-gray-900 mb-4">Browse by Category</h2>
-                        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-3">Browse by Category</h2>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                             Explore campaigns based on causes that matter most to you
                         </p>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                         @foreach($categories as $key => $category)
                         <a href="{{ route('campaigns.index') }}?category={{ $key }}" 
-                           class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 hover:border-blue-300">
-                            <div class="text-4xl mb-4">{{ $category['icon'] }}</div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ $category['name'] }}</h3>
-                            <p class="text-sm text-gray-600">{{ $category['count'] }} campaigns</p>
+                           class="bg-white rounded-xl p-4 text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105 border border-gray-200 hover:border-blue-300">
+                            <div class="text-2xl mb-2">{{ $category['icon'] }}</div>
+                            <h3 class="text-sm font-semibold text-gray-900 mb-1">{{ $category['name'] }}</h3>
+                            <p class="text-xs text-gray-600">{{ $category['count'] }} campaigns</p>
                         </a>
                         @endforeach
                     </div>
