@@ -149,6 +149,93 @@
                     @endguest
                 </div>
             </section>
+
+            <!-- About Us Section -->
+            <section class="py-16 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-4">About CampaignHub</h2>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                            Empowering communities through meaningful campaigns and collective support
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Our Mission</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                CampaignHub is dedicated to connecting passionate individuals and organizations 
+                                with causes that matter. We believe in the power of collective action to create 
+                                positive change in communities around the world.
+                            </p>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Our platform provides a secure and transparent way for campaign creators to 
+                                share their stories and for supporters to contribute to causes they care about.
+                            </p>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-blue-600 mb-2">{{ $totalCampaignsCount }}+</div>
+                                    <div class="text-sm text-gray-600">Campaigns Supported</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-blue-600 mb-2">${{ number_format($totalFundsRaised) }}+</div>
+                                    <div class="text-sm text-gray-600">Total Funds Raised</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-2xl p-8 shadow-xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Why Choose Us?</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
+                                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h4 class="font-semibold text-gray-900">Transparent Process</h4>
+                                        <p class="text-gray-600 text-sm">Every donation is tracked and reported with full transparency</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
+                                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h4 class="font-semibold text-gray-900">Secure Payments</h4>
+                                        <p class="text-gray-600 text-sm">Industry-standard security for all transactions</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
+                                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h4 class="font-semibold text-gray-900">24/7 Support</h4>
+                                        <p class="text-gray-600 text-sm">Dedicated support team available around the clock</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
+                                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h4 class="font-semibold text-gray-900">Global Reach</h4>
+                                        <p class="text-gray-600 text-sm">Supporting campaigns from communities worldwide</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="bg-gray-900 text-white py-12">

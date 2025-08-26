@@ -6,6 +6,7 @@ use App\Models\Campaign;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
+
 {
     /**
      * Display the home page with campaigns.
@@ -18,6 +19,9 @@ class HomeController extends Controller
 
         $totalCampaigns = Campaign::count();
 
+        $totalCampaignsCount = Campaign::count();
+        $totalFundsRaised = Campaign::sum('current_amount');
+
         // Get campaign counts by category
         $categoryCounts = Campaign::select('category')
             ->selectRaw('COUNT(*) as count')
@@ -25,7 +29,6 @@ class HomeController extends Controller
             ->get()
             ->pluck('count', 'category');
 
-        // Define category display names and icons
         $categories = [
             'education' => [
                 'name' => 'Education',
@@ -54,6 +57,6 @@ class HomeController extends Controller
             ]
         ];
 
-        return view('welcome', compact('campaigns', 'totalCampaigns', 'categories'));
+        return view('welcome', compact('campaigns', 'totalCampaigns', 'categories', 'totalCampaignsCount', 'totalFundsRaised'));
     }
 }
