@@ -57,6 +57,19 @@ class Campaign extends Model
     }
 
     /**
+     * Update the campaign status based on the current amount.
+     */
+    public function updateStatus(): void
+    {
+        if ($this->current_amount >= $this->target_amount) {
+            $this->status = 'completed';
+        } else {
+            $this->status = 'pending';
+        }
+        $this->save();
+    }
+
+    /**
      * Get the donations for the campaign.
      */
     public function donations(): HasMany

@@ -27,6 +27,8 @@ class DonationController extends Controller
 
         $campaign->increment('current_amount', $validated['amount']);
 
+        $campaign->updateStatus();
+
         return redirect()->route('home')
             ->with('success', 'Thank you for your donation of $' . number_format($validated['amount']) . '!');
     }
