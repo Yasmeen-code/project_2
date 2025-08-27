@@ -26,10 +26,24 @@ class DonationController extends Controller
         ]);
 
         $campaign->increment('current_amount', $validated['amount']);
-
         $campaign->updateStatus();
 
-        return redirect()->route('home')
-            ->with('success', 'Thank you for your donation of $' . number_format($validated['amount']) . '!');
+        return redirect()->route('thank.you')
+            ->with('donation_amount', $validated['amount'])
+            ->with('campaign_name', $campaign->name)
+            ->with('total_donors', $campaign->donations()->count())
+            ->with('total_raised', $campaign->current_amount);
+    }
+
+    /**
+     * Show thank you page
+     */
+    public function thankYou()
+    {
+        if (!session()->has('donation_amount')) {
+            return redirect()->route('home');
+        }
+
+        return view('thank-you');
     }
 }

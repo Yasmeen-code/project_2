@@ -26,4 +26,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/campaigns/{campaign}/donate', [DonationController::class, 'store'])->name('donate');
 });
 
+Route::get('/thank-you', [DonationController::class, 'thankYou'])->name('thank.you');
+
 require __DIR__.'/auth.php';
