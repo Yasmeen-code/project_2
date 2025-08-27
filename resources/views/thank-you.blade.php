@@ -24,7 +24,6 @@
     </style>
 </head>
 <body class="font-sans antialiased bg-gradient-to-br from-green-50 to-blue-100 min-h-screen">
-    <!-- Navigation -->
     <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -40,7 +39,6 @@
 
     <main class="flex items-center justify-center min-h-screen py-12">
         <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <!-- Success Icon -->
             <div class="mb-8">
                 <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,7 +47,6 @@
                 </div>
             </div>
 
-            <!-- Thank You Message -->
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Thank You for Your Generosity!
             </h1>
@@ -60,7 +57,6 @@
                 will make a real difference in people's lives.
             </p>
 
-            <!-- Impact Message -->
             <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
                 <h2 class="text-2xl font-semibold text-gray-900 mb-4">Your Impact</h2>
                 <p class="text-gray-600 mb-4">
@@ -112,7 +108,6 @@
     </main>
 
     <script>
-        // Create confetti effect
         document.addEventListener('DOMContentLoaded', function() {
             const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff'];
             
@@ -125,7 +120,6 @@
                     confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
                     document.body.appendChild(confetti);
                     
-                    // Remove confetti after animation
                     setTimeout(() => {
                         confetti.remove();
                     }, 5000);
