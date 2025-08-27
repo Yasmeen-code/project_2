@@ -14,14 +14,12 @@ class CampaignController extends Controller
     {
         $query = Campaign::latest();
         
-        // Filter by category if provided
         if ($request->has('category') && $request->category) {
             $query->where('category', $request->category);
         }
         
         $campaigns = $query->paginate(12);
         
-        // Get category counts for filter display
         $categoryCounts = Campaign::select('category')
             ->selectRaw('COUNT(*) as count')
             ->groupBy('category')

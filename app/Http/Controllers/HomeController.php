@@ -22,7 +22,6 @@ class HomeController extends Controller
         $totalCampaignsCount = Campaign::count();
         $totalFundsRaised = Campaign::sum('current_amount');
 
-        // Get campaign counts by category
         $categoryCounts = Campaign::select('category')
             ->selectRaw('COUNT(*) as count')
             ->groupBy('category')
