@@ -46,4 +46,23 @@ class DonationController extends Controller
 
         return view('thank-you');
     }
+
+    /**
+     * Show campaigns that the authenticated user has donated to
+     */
+    public function showDonatedCampaigns()
+    {
+        $user = Auth::user();
+        
+        $donatedCampaigns = Campaign::whereHas('donations', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })
+        ->with(['donations' => function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        }])
+        ->latest()
+        ->get();
+
+        return view('dashboard', compact('donatedCampaigns'));
+    }
 }
