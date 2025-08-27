@@ -51,12 +51,10 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <!-- Main Content -->
                     <div class="lg:col-span-2">
-                        <!-- Campaign Image -->
                         <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
                             <img src="{{ $campaign->image_url }}" alt="{{ $campaign->name }}" class="w-full h-96 object-cover">
                         </div>
 
-                        <!-- Campaign Story -->
                         <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
                             <h2 class="text-2xl font-bold text-gray-900 mb-6">Campaign Story</h2>
                             <div class="prose prose-lg text-gray-600 leading-relaxed">
@@ -65,7 +63,6 @@
                             </div>
                         </div>
 
-                        <!-- Updates Section -->
                         <div class="bg-white rounded-2xl shadow-xl p-8">
                             <h2 class="text-2xl font-bold text-gray-900 mb-6">Latest Updates</h2>
                             <div class="space-y-4">
@@ -88,10 +85,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Sidebar -->
                     <div class="space-y-6">
-                        <!-- Progress Card -->
                         <div class="bg-white rounded-2xl shadow-xl p-6">
                             <h3 class="text-lg font-semibold text-gray-900 mb-4">Campaign Progress</h3>
                             
@@ -124,7 +118,6 @@
                             </div>
                         </div>
 
-                        <!-- Donation Form -->
                         <div class="bg-white rounded-2xl shadow-xl p-6">
                             <h3 class="text-lg font-semibold text-gray-900 mb-4">Make a Difference</h3>
                             <form action="{{ route('donate', $campaign->id) }}" method="POST">
@@ -142,7 +135,6 @@
                             </form>
                         </div>
 
-                        <!-- Campaign Info -->
                         <div class="bg-white rounded-2xl shadow-xl p-6">
                             <h3 class="text-lg font-semibold text-gray-900 mb-4">Campaign Details</h3>
                             <div class="space-y-3">
